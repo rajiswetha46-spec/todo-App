@@ -1,83 +1,121 @@
+import {useState ,useRef} from "react";
 import "./todo.css";
 
 function ToDo()
 {
-    return (<>
-    <div className="container">
-          <header className="header">My To Do List</header>
-          <div className="form">
-              <div className="row" >
-                <div className="item">
-                    <label> Enter the Task</label>
-                </div>
-                <div className="item"> 
-                    <input type="text"
-                     maxLength={100}
-                     disabled={false}
-                     placeholder="Enter the task..."
-                     title="Enter the task..."
-                     /> 
-                
-                </div>
-              </div>
+
+    const [tasks, setTasks] = useState([]);
+
+    const taskTextBox = useRef();
+    const taskDescriptionBox = useRef();
+    const taskKindBox = useRef();
+    const taskDueDateBox = useRef();
+    const taskDueTimeBox = useRef();
+
+    
+
+    function addTask()
+    {
+        const task={
+        taskName:taskTextBox.current.value,      
+        taskDescription:taskDescriptionBox.current.value,
+        taskKind:taskKindBox.current.value,
+        taskDueDate:taskDueDateBox.current.value,
+        taskDueTime:taskDueTimeBox.current.value
+        }
+
+        setTasks([...tasks,task]);
+        
+    }
 
 
-              <div className="row" >
-                <div className="item">
-                    <label> Enter the Description</label>
-                </div>
-                <div className="item"> 
-                    <textarea></textarea>
-                </div>
-              </div>
+    return (<><header className="header">
+        SWETHA R
+        </header>
+        
+        <div className="main-container">
+        <div className="row">
+            <div className="item">
+               <label>Add Task</label>
+            </div>
+            <div className="item">
+                <input type="text" ref={taskTextBox} maxLength={100} placeholder="Please enter the task" title="Please enter the task"/>
+            </div>
+        </div>
+        <br/>
+        <div className="row">
+            <div className="item">
+               <label>Add Description</label>
+            </div>
+            <div className="item">
+                <textarea ref={taskDescriptionBox} placeholder="Please enter the description" title="Please enter the description"></textarea>
+            </div>
+        </div>
 
-              <div className="row" >
-                <div className="item">
-                    <label> Enter the Type</label>
-                </div>
-                <div className="item"> 
-                    <select>
-                        <option>Personal</option>
-                        <option>College</option>
+        <div className="row">
+            <div className="item">
+               <label>Task Kind</label>
+            </div>
+            <div className="item">
+                <select ref={taskKindBox}>
+                    <option>Personal</option>
+                      <option>College</option>
                         <option>Shopping</option>
-                    </select>
-                </div>
-              </div>
-             
-              <div className="row" >
-                <div className="item">
-                    <label> Enter the Due Date</label>
-                </div>
-                <div className="item"> 
-                    <input type="date"
-                     /> 
-                
-                </div>
-              </div>
-            
-             <div className="row" >
-                <div className="item">
-                    <label> Enter the Due Time</label>
-                </div>
-                <div className="item"> 
-                    <input type="time"
-                     /> 
-                
-                </div>
-              </div>
+                        <option>Workout</option>
+                </select>
+            </div>
+        </div>
 
-              <div className="row" >
-                <div className="item">
-                    
-                </div>
-                <div className="item"> 
-                    <button>Add Task</button>
-                </div>
-              </div>
-          </div>
+        <div className="row">
+            <div className="item">
+               <label>Due Date</label>
+            </div>
+            <div className="item">
+                <input type="date" ref={taskDueDateBox}/>
+            </div>
+        </div>
+
+        <div className="row">
+            <div className="item">
+               <label>Due Time</label>
+            </div>
+            <div className="item">
+                <input type="time" ref={taskDueTimeBox}/>
+            </div>
+        </div>
+        <div className="row">
+            <div className="item">
+               
+            </div>
+            <div className="item">
+                 <button onClick={addTask}>Add</button>
+                    </div>
+        </div>
+        </div>
+
+        
+
+        <div className="task-list">
+            {tasks.map((task,index)=>{
+                return (<div key={index} className="task-container">
+                    <div className="task-name">{task.taskName}</div>
+                    <div className="task-description">{task.taskDescription}</div>
+                    <div className="task-kind">{task.taskKind}</div>
+                   <div className="task-footer">
+    <div className="task-due-date">
+        {task.taskDueDate}
     </div>
-    </>)
+
+    <div className="task-due-time">
+        {task.taskDueTime}
+    </div>
+</div>
+                </div>)
+            })}
+        </div>
+        
+
+        </>)
 }
 
-
-export default ToDo; 
+export default ToDo;
