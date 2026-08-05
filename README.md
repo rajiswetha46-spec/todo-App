@@ -38,7 +38,8 @@ Upload to GitHub Pages for free hosting.
 # OUTPUT
 
 
-<img width="1356" height="889" alt="Screenshot 2026-08-03 212223" src="https://github.com/user-attachments/assets/806cc15d-b9d2-4fc1-825a-2d4b28fe559b" />
+<img width="1907" height="911" alt="Screenshot 2026-08-05 115717" src="https://github.com/user-attachments/assets/feeb78ab-42fd-4f95-b47f-5e0ca5743430" />
+
 
 # RESULT
 The program for creating To-do list using JavaScript is executed successfully.
